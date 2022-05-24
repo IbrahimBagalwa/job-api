@@ -1,4 +1,5 @@
-const mongoose = reqiire('mongoose')
+const mongoose = require('mongoose')
+const encryptPassword = require('../helpers/passwordEncDec')
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -20,8 +21,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 6,
-    maxlength: 12,
   },
+})
+// mongoose middleware
+
+UserSchema.pre('save', async function (next) {
+  this.password = await encryptPassword(this.password)
+  next()
 })
 
 module.exports = mongoose.model('User', UserSchema)
