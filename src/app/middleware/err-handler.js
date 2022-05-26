@@ -7,7 +7,6 @@ const errorHandler = (err, req, res, next) => {
       success: err.success,
       status: err.statusCode,
       message: err.message,
-      errors: err,
     })
   }
 
