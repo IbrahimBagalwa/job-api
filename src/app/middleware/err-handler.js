@@ -14,6 +14,7 @@ const errorHandler = (err, req, res, next) => {
     success: false,
     status: StatusCodes.INTERNAL_SERVER_ERROR,
     message: `Something went wrong, Please try again later`,
+    errors: err,
   })
 }
 

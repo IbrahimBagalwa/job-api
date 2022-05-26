@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const encryptPassword = require('../helpers/passwordEncDec')
+const { encryptPassword, isPasswordTrue } = require('../helpers/passwordEncDec')
+const generateToken = require('../helpers/token')
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -30,4 +31,13 @@ UserSchema.pre('save', async function (next) {
   next()
 })
 
+// instance method
+UserSchema.methods.createJWT = function () {
+  return generateToken({ userId: this._id, name: this.username })
+}
+
+UserSchema.methods.comparePassword = async function (currentPassword) {
+  const isMatch = await isPasswordTrue(currentPassword, this.password)
+  return isMatch
+}
 module.exports = mongoose.model('User', UserSchema)

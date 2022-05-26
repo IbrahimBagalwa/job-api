@@ -2,7 +2,6 @@ const express = require('express')
 const { StatusCodes } = require('http-status-codes')
 require('dotenv').config()
 require('express-async-errors')
-
 const app = express()
 
 // error handler
@@ -23,6 +22,7 @@ app.get('/', (req, res) => {
   })
 })
 
+// middleware
 app.use(notFound)
 app.use(errorHandler)
 
