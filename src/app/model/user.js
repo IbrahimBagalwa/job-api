@@ -32,8 +32,8 @@ UserSchema.pre('save', async function (next) {
 })
 
 // instance method
-UserSchema.method.createJWT = function () {
-  return generateToken(this._id, this.username)
+UserSchema.methods.createJWT = function () {
+  return generateToken({ id: this._id, name: this.username })
 }
 
 module.exports = mongoose.model('User', UserSchema)
