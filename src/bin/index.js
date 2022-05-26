@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
   })
 })
 
+// middleware
 app.use(notFound)
 app.use(errorHandler)
 
