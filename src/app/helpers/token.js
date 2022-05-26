@@ -1,5 +1,5 @@
 const pkg = require('jsonwebtoken')
-require('dotenv'), config()
+require('dotenv').config()
 
 const { sign, verify, decode } = pkg
 const { JWT_EXPIRE_IN_HRS, JWT_KEY } = process.env
