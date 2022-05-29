@@ -24,8 +24,8 @@ const UserSchema = new mongoose.Schema({
     minlength: 6,
   },
 })
-// mongoose middleware
 
+// mongoose middleware
 UserSchema.pre('save', async function (next) {
   this.password = await encryptPassword(this.password)
   next()
@@ -33,7 +33,7 @@ UserSchema.pre('save', async function (next) {
 
 // instance method
 UserSchema.methods.createJWT = function () {
-  return generateToken({ userId: this._id, name: this.username })
+  return generateToken(this._id, this.username)
 }
 
 UserSchema.methods.comparePassword = async function (currentPassword) {
