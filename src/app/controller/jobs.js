@@ -22,8 +22,23 @@ const createJob = async (req, res) => {
     data: job,
   })
 }
-const getAllJobById = async (req, res) => {
-  res.send('get single job')
+const getJobById = async (req, res) => {
+  const {
+    user: { userId },
+    params: { id: jobId },
+  } = req
+
+  const job = await Job.findOne({ _id: jobId, createdBy: userId })
+  if (!job) {
+    throw new NotFoundError(`No job found with id ${jobId}`)
+  }
+
+  res.status(StatusCodes.OK).json({
+    success: true,
+    status: StatusCodes.OK,
+    message: 'Record retrieved successfully',
+    data: job,
+  })
 }
 
 const updateJob = async (req, res) => {
@@ -34,4 +49,4 @@ const deleteJob = async (req, res) => {
   res.send('Job deleted successfully')
 }
 
-module.exports = { getAllJobById, getAllJobs, deleteJob, createJob, updateJob }
+module.exports = { getJobById, getAllJobs, deleteJob, createJob, updateJob }
