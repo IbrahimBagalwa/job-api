@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes')
-// const { CustomAPIError } = require('../helpers/errors')
+const { CustomAPIError } = require('../helpers/errors')
 
 const errorHandler = (err, req, res, next) => {
   let customError = {
@@ -21,7 +21,12 @@ const errorHandler = (err, req, res, next) => {
         .map((item) => item.message)
         .join(','))
   }
-  if (err.code && err.code === 11000) {
+  if (err.name === 'CastError') {
+    customError.success,
+      (customError.statusCode = StatusCodes.NOT_FOUND),
+      (customError.message = `No item found with this id: ${err.value}`)
+  }
+  if (err.code && err.code === process.env.DUPLICATED_MONGOOSE_ERROR) {
     customError.success,
       (customError.statusCode = StatusCodes.BAD_REQUEST),
       (customError.message = `Duplicated value entered for ${Object.keys(
