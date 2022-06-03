@@ -58,7 +58,7 @@ Email Validation Regex
 - xss-clean
 - express-rate-limit
 
-Swagger UI
+Swagger UI Parameters
 
 ```yaml
 /jobs/{id}:
