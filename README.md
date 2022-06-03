@@ -7,6 +7,7 @@ node express api
 ```bash
 npm install && npm start
 ```
+
 #### Database Connection
 
 1. Import connect.js
@@ -70,3 +71,7 @@ Swagger UI Parameters
       required: true
       description: the job id
 ```
+
+### Links
+
+- Live URL: [Jobs Api](https://jobs-api-v-0-1.herokuapp.com/)
