@@ -37,19 +37,14 @@ app.use(xss())
 app.get('/', (req, res) => {
   res.status(StatusCodes.OK).send(`
       <div style="width: 80%; margin: 0 auto; font-family: sans-serif;">
-    <nav style="background-color: #517be6; padding: 0.1rem;">
-      <h1 style="text-align: center;">Welcome to Job Api</h1>
-    </nav>
-    <div style="padding: 2rem;">
-        <h2> Hey !</h2>
-    
-        <p>
-          Do you need to show our documentation ??
-        </p> 
+        <nav style="background-color: #517be6; padding: 0.1rem;">
+          <h1 style="text-align: center;">Welcome to Job Api</h1>
+        </nav>
+      <div style="padding: 2rem;">
+      <h2> Hey !</h2>
+      <p>Do you need to show our documentation ??</p> 
       <div style="padding: 1rem 0 1rem 0;">
-        <p>
-            Click here <a href='/api-docs'><b style="text-align: center;">Documentation</b></a>
-        </p>
+        <p>Click here <a href='/api-docs'><b style="text-align: center;">Documentation</b></a></p>
       </div>
       <footer style="background-color: #c4c4c4; padding: 0.1rem">
         <p style="text-align: center; font-size: 0.8rem;">© 2022 <a href="https://github.com/IbrahimBagalwa">Ibrahim Bagalwa</a>. All rights reserved.</p>
